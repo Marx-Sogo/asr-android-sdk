@@ -19,9 +19,14 @@ android {
         versionName VERSION_NAME as String//版本名，建议更新,在gradle.properties里面修改
 
     }
+
+    lintOptions {
+        abortOnError false
+    }
+
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 //            buildConfigField "boolean", "ENABLE_DEBUG", "false"
         }
