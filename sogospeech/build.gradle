@@ -118,7 +118,7 @@ dependencies {
     }
 //    compile project(':sogocommon')
 //    compile 'org.conscrypt:conscrypt-android:1.2.0'
-    implementation 'com.github.sogouspeech:sogou-common:0.1'
+    implementation 'com.github.sogouspeech:common-android-sdk:0.2'
 
     implementation files('libs/conscrypt-1.4.0.jar')
 }

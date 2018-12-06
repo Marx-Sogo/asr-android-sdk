@@ -13,6 +13,7 @@ import com.sogou.sogocommon.utils.FileUtils;
 import com.sogou.sogocommon.utils.LogUtil;
 import com.sogou.sogocommon.utils.RingBufferFlip;
 import com.sogou.sogocommon.utils.ShortByteUtil;
+import com.sogou.sogouspeech.auth.TokenFetchTask;
 import com.sogou.sogouspeech.paramconstants.SpeechConstants;
 import com.sogou.sogouspeech.recognize.IAudioRecognizer;
 import com.sogou.sogouspeech.recognize.bean.SogoASRConfig;
@@ -593,5 +594,22 @@ public class SogoSpeech implements InstructionsManager , VadDetectorCallback, Ev
 
     // AudioRecognizer的回调EventListener
 //================================================================================
+
+    public static String sBaseUrl = "";
+
+    public static void initAuth(Context context,String baseUrl){
+        sBaseUrl = baseUrl;
+        TokenFetchTask task = new TokenFetchTask(context, new TokenFetchTask.TokenFetchListener() {
+            @Override
+            public void onTokenFetchSucc(String result) {
+
+            }
+
+            @Override
+            public void onTokenFetchFailed(String errMsg) {
+            }
+        });
+        task.execute(null);    }
+
 
 }

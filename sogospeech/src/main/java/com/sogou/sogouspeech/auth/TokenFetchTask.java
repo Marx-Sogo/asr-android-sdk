@@ -9,6 +9,7 @@ import com.sogou.sogocommon.utils.CommonSharedPreference;
 import com.sogou.sogocommon.utils.CommonUtils;
 import com.sogou.sogocommon.utils.HttpsUtil;
 import com.sogou.sogocommon.utils.LogUtil;
+import com.sogou.sogouspeech.SogoSpeech;
 import com.sogou.speech.auth.v1.CreateTokenRequest;
 import com.sogou.speech.auth.v1.CreateTokenResponse;
 import com.sogou.speech.auth.v1.authGrpc;
@@ -71,9 +72,9 @@ public class TokenFetchTask {
                 .setAppkey(CommonUtils.getApplicationMetaData(context, SogoConstants.APPKEY))
                 .setUuid(""+android.os.Build.SERIAL)
                 .buildPartial();
-        ManagedChannel channel = new OkHttpChannelProvider().builderForAddress(SogoConstants.URL_CONSTANT.URL_RECOGNIZE, 443)
+        ManagedChannel channel = new OkHttpChannelProvider().builderForAddress(SogoSpeech.sBaseUrl, 443)
                 .negotiationType(NegotiationType.TLS)
-                .overrideAuthority(SogoConstants.URL_CONSTANT.URL_RECOGNIZE + ":443")
+                .overrideAuthority(SogoSpeech.sBaseUrl + ":443")
                 .sslSocketFactory(HttpsUtil.getSSLSocketFactory(null, null, null))
                 .build();
         authGrpc.authStub client = authGrpc.newStub(channel);

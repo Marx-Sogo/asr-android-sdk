@@ -10,6 +10,7 @@ import com.sogou.sogocommon.utils.ShortByteUtil;
 import com.sogou.sogocommon.utils.SogoConstants;
 import com.sogou.sogocommon.utils.LogUtil;
 import com.sogou.sogouspeech.EventListener;
+import com.sogou.sogouspeech.SogoSpeech;
 import com.sogou.sogouspeech.paramconstants.SpeechConstants;
 import com.sogou.sogouspeech.recognize.IAudioRecognizer;
 import com.sogou.sogouspeech.recognize.bean.SogoASRConfig;
@@ -111,9 +112,9 @@ public class OnlineRecognizer extends IAudioRecognizer {
 
         Log.d(TAG, "create rpc client : " + mAsrSettings);
         final ManagedChannel channel = new OkHttpChannelProvider()
-                .builderForAddress(SogoConstants.URL_CONSTANT.URL_RECOGNIZE,
+                .builderForAddress(SogoSpeech.sBaseUrl,
                         443)
-                .overrideAuthority(SogoConstants.URL_CONSTANT.URL_RECOGNIZE
+                .overrideAuthority(SogoSpeech.sBaseUrl
                         + ":443")
                 .negotiationType(NegotiationType.TLS)
                 .sslSocketFactory(HttpsUtil.getSSLSocketFactory(null, null, null))
